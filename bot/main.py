@@ -106,6 +106,11 @@ STRINGS = {
             "🌐 — تغییر زبان"
         ),
         "lang_switched": "Language changed to English. 🌐",
+        "github_text": (
+            "🐙 پروژه ربات روی گیت‌هاب\n\n"
+            "کد کامل ربات اونجا منتشر شده — می‌تونی ببینیش، ستاره بدی ⭐ و تو توسعه‌ش کمک کنی 👇"
+        ),
+        "github_btn": "🐙 مشاهده پروژه در گیت‌هاب",
         "subscribed": "✅ عضو شدی! خبرهای جدید سیزن و ایونت رو همینجا برات می‌فرستم.",
         "already_subscribed": "✅ قبلاً عضو بودی!",
         "unsubscribed": "❌ عضویت لغو شد.",
@@ -214,6 +219,11 @@ STRINGS = {
             "🌐 — switch language"
         ),
         "lang_switched": "زبان به فارسی تغییر کرد. 🌐",
+        "github_text": (
+            "🐙 The bot's project on GitHub\n\n"
+            "The full source code is published there — check it out, give it a star ⭐ and help it grow 👇"
+        ),
+        "github_btn": "🐙 View the project on GitHub",
         "subscribed": "✅ Subscribed! I'll send new season & event news right here.",
         "already_subscribed": "✅ Already subscribed!",
         "unsubscribed": "❌ Unsubscribed.",
@@ -268,6 +278,7 @@ BUTTONS = {
         "news": "📰 آخرین اخبار",
         "archive": "📚 آرشیو اخبار",
         "help": "❓ راهنما",
+        "github": "🐙 گیت‌هاب",
         "tank": "🎖 تانک",
         "air": "✈️ هوایی",
         "ship": "🚢 دریایی",
@@ -283,6 +294,7 @@ BUTTONS = {
         "news": "📰 Latest news",
         "archive": "📚 News archive",
         "help": "❓ Help",
+        "github": "🐙 GitHub",
         "tank": "🎖 Tanks",
         "air": "✈️ Aircraft",
         "ship": "🚢 Ships",
@@ -297,6 +309,8 @@ BUTTONS = {
 }
 
 MODE_OF_BUTTON = {"tank": "tanks", "air": "aircraft", "ship": "ships"}
+
+GITHUB_URL = "https://github.com/aria16x24pr-netizen/Persian-wartunder-Mobile-bot"
 
 
 # ---------- admin & owner panels ----------
@@ -989,7 +1003,7 @@ def keyboard(lang: str, subscribed: bool, is_owner: bool = False) -> ReplyKeyboa
     sub_btn = b["unsub"] if subscribed else b["sub"]
     rows = [
         [b["news"], b["archive"]],
-        [b["help"]],
+        [b["help"], b["github"]],
         [b["tank"], b["air"], b["ship"]],
         [b["vehicle"]],
         [b["mynews"], b["friend"]],
@@ -1479,6 +1493,13 @@ async def on_button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     elif text == b["archive"]:
         await update.message.reply_text(
             s["arch_title"], reply_markup=_archive_seasons_kb(lang)
+        )
+    elif text == b["github"]:
+        await update.message.reply_text(
+            s["github_text"],
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton(s["github_btn"], url=GITHUB_URL)]]
+            ),
         )
     elif text in (b["tank"], b["air"], b["ship"]):
         mode = next(k for k, v in b.items() if v == text)
