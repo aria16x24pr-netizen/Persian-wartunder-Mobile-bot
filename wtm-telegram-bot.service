@@ -1,0 +1,16 @@
+[Unit]
+Description=War Thunder Mobile Telegram Bot (@PersianWarTunder_bot)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/hatch/workspace/war-thunder-mobile-bot
+EnvironmentFile=/home/hatch/workspace/war-thunder-mobile-bot/.env
+EnvironmentFile=/home/hatch/workspace/war-thunder-mobile-bot/.proxy.env
+ExecStart=/home/hatch/workspace/war-thunder-mobile-bot/.venv/bin/python -m bot.main
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,20 @@
+# Secrets — never publish
+.env
+.proxy.env
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Runtime state / member data (private)
+data/users.json
+data/profiles.json
+data/subscriptions.json
+data/admins.json
+data/ai_chat_off.json
+data/seen_news.json
+data/vehicles.staging-enriched.json
+
+# Logs
+*.log
