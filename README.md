@@ -1,6 +1,6 @@
 # ربات تلگرام War Thunder Mobile 🎖️
 
-دستیار تلگرامی فارسی برای بازی **War Thunder Mobile** — الهام‌گرفته از @paimonakbot (دستیار Genshin Impact).
+دستیار تلگرامی فارسی برای بازی **War Thunder Mobile**.
 
 ربات زنده: [@PersianWarTunder_bot](https://t.me/PersianWarTunder_bot)
 
